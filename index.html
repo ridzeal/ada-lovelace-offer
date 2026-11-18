@@ -199,9 +199,10 @@
   </footer>
 </div>
 <script>
-  // Reveal the demo button only once a real Loom URL replaces demo.html.
+  // The demo button links to the real, self-hosted walkthrough at demo.html.
+  // Keep the guard so an unresolved placeholder can never expose a dead link.
   document.querySelectorAll('.demo-link').forEach(function (el) {
-    if (el.innerHTML.indexOf('demo.html') !== -1) el.style.display = 'none';
+    if (el.innerHTML.indexOf('{{DEMO_URL}}') !== -1) el.style.display = 'none';
   });
 </script>
 </body>
