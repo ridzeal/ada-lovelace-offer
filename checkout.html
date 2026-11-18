@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Reserve your $297 pilot — checkout</title>
+<style>
+  :root{--bg:#0b0f1a;--surface:#151d2e;--ink:#f5f7fb;--muted:#a9b4c9;--accent:#6ee7b7;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(700px 400px at 50% -10%,rgba(96,165,250,.16),transparent 60%),var(--bg);color:var(--ink);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:640px;margin:0 auto;padding:48px 22px 72px}
+  h1{font-size:clamp(28px,6vw,40px);line-height:1.1;letter-spacing:-.03em;margin:0 0 12px}
+  p{color:var(--muted)}
+  .card{background:linear-gradient(160deg,var(--surface),#111827);border:1px solid var(--line);border-radius:16px;padding:26px;margin:26px 0}
+  .row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:0}
+  .total{font-size:24px;font-weight:800;color:var(--accent)}
+  label{display:block;font-weight:650;margin:18px 0 6px}
+  input{width:100%;box-sizing:border-box;padding:13px;border-radius:10px;border:1px solid var(--line);background:#0e1626;color:var(--ink);font-size:16px}
+  button{margin-top:20px;width:100%;padding:15px;border:0;border-radius:12px;background:linear-gradient(135deg,var(--accent),#34d399);color:#06231a;font-weight:800;font-size:16px;cursor:pointer}
+  .note{font-size:13px;color:#7c8aa3;margin-top:16px}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<main>
+  <h1>Reserve your $297 paid pilot</h1>
+  <p>AI missed-call recovery + discovery-call booking for local home-service companies. 14-day pilot, payment upfront, refund if we don't book a qualified call.</p>
+
+  <div class="card">
+    <div class="row"><span>14-day paid pilot — missed-call recovery</span><span>$297.00</span></div>
+    <div class="row"><span>Setup, qualification &amp; booking configuration</span><span>Included</span></div>
+    <div class="row"><span>Total (one-time, USD)</span><span class="total">$297.00</span></div>
+  </div>
+
+  <form id="order" onsubmit="return send(event)">
+    <label for="email">Your work email</label>
+    <input id="email" name="email" type="email" required placeholder="you@yourcompany.com" />
+    <label for="company">Company</label>
+    <input id="company" name="company" type="text" required placeholder="Acme HVAC" />
+    <button type="submit">Reserve &amp; request secure payment link →</button>
+  </form>
+  <p class="note">This opens a pre-filled email to <a href="mailto:ridzeal@gmail.com">ridzeal@gmail.com</a>. We reply within one business day with the secure card checkout and your pilot start form. No card is charged on this page. Prefer to talk first? <a href="mailto:ridzeal@gmail.com?subject=Question%20about%20the%20%24297%20pilot">Ask a question</a>.</p>
+</main>
+<script>
+  function send(e){
+    e.preventDefault();
+    var email = document.getElementById('email').value.trim();
+    var company = document.getElementById('company').value.trim();
+    var subject = encodeURIComponent('Paid pilot reservation — $297 — ' + company);
+    var body = encodeURIComponent('Reserve the $297 paid pilot.\n\nCompany: ' + company + '\nEmail: ' + email + '\n\nPlease send the secure payment link and pilot start form.');
+    window.location.href = 'mailto:ridzeal@gmail.com?subject=' + subject + '&body=' + body;
+    return false;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stop Losing the Calls You Miss — $297 Paid Pilot</title>
+<meta name="description" content="AI missed-call recovery for local home-service companies. Instant text-back, AI qualification, and a 15-minute discovery call booked on your calendar. Live in 48 hours. $297 paid pilot." />
+<style>
+  :root{
+    --bg:#0b0f1a; --bg2:#111827; --surface:#151d2e; --surface2:#1b2740;
+    --ink:#f5f7fb; --muted:#a9b4c9; --faint:#7c8aa3;
+    --accent:#6ee7b7; --accent2:#60a5fa; --glow:rgba(110,231,183,.18);
+    --line:rgba(255,255,255,.08); --radius:16px; --max:760px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:
+      radial-gradient(900px 500px at 50% -10%, rgba(96,165,250,.16), transparent 60%),
+      radial-gradient(700px 400px at 90% 20%, var(--glow), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+  a{color:inherit;text-decoration:none}
+  .sep{height:1px;border:0;background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent);margin:0}
+
+  header{display:flex;align-items:center;justify-content:space-between;padding:22px 0;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em}
+  .brand .mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 24px var(--glow)}
+  .brand small{color:var(--faint);font-weight:500;font-size:12px;margin-left:2px}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 22px;border-radius:12px;font-weight:700;font-size:16px;
+    background:linear-gradient(135deg,var(--accent),#34d399);color:#06231a;
+    box-shadow:0 10px 30px rgba(52,211,153,.25);transition:transform .15s ease,box-shadow .15s ease;
+    border:0;cursor:pointer;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(52,211,153,.35)}
+  .btn.sm{padding:9px 15px;font-size:14px;border-radius:10px;box-shadow:none}
+  .btn.block{width:100%}
+
+  section{padding:52px 0}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--accent);margin:0 0 14px}
+  h1{font-size:clamp(34px,7vw,54px);line-height:1.06;letter-spacing:-.035em;margin:0 0 18px;font-weight:800}
+  h1 .hl{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  h2{font-size:clamp(25px,5vw,34px);line-height:1.15;letter-spacing:-.025em;margin:0 0 18px;font-weight:800}
+  p{margin:0 0 16px;color:var(--muted)}
+  .lead{font-size:clamp(17px,3vw,20px);color:#d7dfec}
+  .hero p.lead{max-width:660px}
+  .micro{color:var(--faint);font-size:13px;margin:14px 0 0}
+  .cta-row{margin:28px 0 0}
+
+  .card{background:linear-gradient(160deg,var(--surface),var(--bg2));border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+  .card.offer{position:relative;overflow:hidden}
+  .card.offer:before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.clean li{position:relative;padding:8px 0 8px 28px;color:var(--muted)}
+  ul.clean li:before{content:"✓";position:absolute;left:0;top:8px;color:var(--accent);font-weight:800}
+  .pain li:before{content:"×";color:#f87171}
+
+  .steps{display:grid;gap:14px}
+  .step{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .step .n{flex:0 0 34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:800;background:linear-gradient(135deg,rgba(110,231,183,.18),rgba(96,165,250,.18));color:var(--accent)}
+  .step h3{margin:0 0 4px;font-size:17px}
+  .step p{margin:0;font-size:14px}
+
+  .price{font-size:clamp(40px,9vw,60px);font-weight:800;letter-spacing:-.04em;line-height:1}
+  .price span{font-size:16px;font-weight:600;color:var(--faint);letter-spacing:0}
+  .pill{display:inline-block;padding:5px 11px;border-radius:999px;font-size:12px;font-weight:700;background:rgba(110,231,183,.12);color:var(--accent);border:1px solid rgba(110,231,183,.22);margin-bottom:16px}
+
+  details{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:10px 0;padding:0 18px}
+  details[open]{background:var(--surface2)}
+  summary{cursor:pointer;font-weight:650;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:14px}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";color:var(--accent);font-weight:800;font-size:20px;line-height:1}
+  details[open] summary:after{content:"−"}
+  details p{font-size:14.5px;margin:0 0 16px}
+
+  .final{text-align:center}
+  .final .btn{margin-top:8px}
+  footer{padding:34px 0 46px;color:var(--faint);font-size:13px;text-align:center}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:22px 0 0;font-size:13px;color:var(--faint)}
+  .flow b{color:var(--ink);font-weight:650}
+  .flow .arw{color:var(--accent)}
+  :focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
+  @media (max-width:520px){section{padding:40px 0}.brand small{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand"><span class="mark" aria-hidden="true"></span> Ada Lovelace <small>speed-to-lead</small></div>
+    <a class="btn sm" href="checkout.html">Get the pilot →</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">For local home-service companies · HVAC · plumbing · roofing</p>
+      <h1>Stop losing the <span class="hl">calls you miss.</span></h1>
+      <p class="lead">When a caller hangs up instead of leaving a voicemail, they call the next Google result. We text them back in seconds, qualify budget, need and timeline with AI, and put a 15-minute discovery call on your calendar — while you're on the tools.</p>
+      <p class="lead"><strong style="color:var(--ink)">Live in 48 hours. One recovered job pays for the month.</strong></p>
+      <div class="cta-row">
+        <a class="btn" href="checkout.html">Start the $297 paid pilot →</a>
+        <p class="micro">14-day pilot · payment upfront · no contract · refund if we don't book a qualified call</p>
+      </div>
+      <div class="flow" aria-label="How it works at a glance">
+        <b>Missed call</b><span class="arw">→</span><b>Instant text-back</b><span class="arw">→</span><b>AI qualify</b><span class="arw">→</span><b>Booked call</b>
+      </div>
+    </section>
+
+    <hr class="sep" />
+
+    <section>
+      <p class="eyebrow">The problem</p>
+      <h2>Most callers won't leave a voicemail.</h2>
+      <p>They have a problem now, and "call back during business hours" doesn't work for them. If you don't reach them in the first five minutes, the job goes to whoever answers.</p>
+      <ul class="clean pain">
+        <li>After-hours and on-the-tools calls go straight to voicemail — and stay there.</li>
+        <li>Your team is busy with the job in front of them; follow-up happens hours or days later.</li>
+        <li>No one confirms budget, need, or timeline before the call, so you waste time on tyre-kickers.</li>
+        <li>Leads live in a notebook or inbox, with no calendar link and no second touch.</li>
+      </ul>
+    </section>
+
+    <hr class="sep" />
+
+    <section>
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps, fully automated.</h2>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><div><h3>Triage</h3><p>A missed call triggers an instant SMS text-back. Every reply is classified — qualified, needs info, not interested, out of office, or spam — so real buyers rise to the top.</p></div></div>
+        <div class="step"><div class="n">2</div><div><h3>Qualify</h3><p>The AI extracts budget, need and timeline from the conversation and asks one short follow-up for anything missing. Only leads that pass your gates move forward.</p></div></div>
+        <div class="step"><div class="n">3</div><div><h3>Book</h3><p>Qualified leads get a 15-minute slot on your calendar — conflict-free, business hours only. You show up to a call with a pre-qualified buyer.</p></div></div>
+      </div>
+      <p class="demo-link" style="text-align:center;margin-top:22px">
+        <a class="btn sm" href="{{DEMO_URL}}" style="background:rgba(255,255,255,.08);color:var(--ink);box-shadow:none">▶ Watch the 90-second demo</a>
+      </p>
+    </section>
+
+    <hr class="sep" />
+
+    <section>
+      <p class="eyebrow">The offer</p>
+      <h2>One pilot. One price. One outcome.</h2>
+      <div class="card offer">
+        <span class="pill">14-DAY PAID PILOT · 3 SLOTS THIS WEEK</span>
+        <div class="price">$297 <span>one-time</span></div>
+        <p style="margin-top:14px">Everything you need to stop leaking missed calls — configured for your business and live in ~48 hours.</p>
+        <ul class="clean">
+          <li>Instant SMS text-back on missed calls, in your voice</li>
+          <li>AI triage + qualification of budget, need and timeline</li>
+          <li>Conflict-free 15-minute discovery-call booking on your calendar</li>
+          <li>Your services, prices and service area configured for you</li>
+          <li>Done-for-you setup — no software to learn</li>
+          <li><strong style="color:var(--ink)">Refund if we don't book a qualified call in 14 days</strong></li>
+        </ul>
+        <div class="cta-row"><a class="btn block" href="checkout.html">Pay $297 &amp; start my pilot →</a></div>
+        <p class="micro">Payment upfront. Delivery starts after payment. No contract, cancel any time.</p>
+      </div>
+      <p class="micro" style="margin-top:16px">After the pilot: standard service is <strong style="color:var(--ink)">$497 setup + $249/mo</strong>. The pilot is the only way in — no obligation to continue.</p>
+    </section>
+
+    <hr class="sep" />
+
+    <section>
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions, answered.</h2>
+
+      <details><summary>Who is this for?</summary><p>Local home-service companies — HVAC, plumbing and roofing — with 2–20 trucks, who win work by phone and don't have online booking. If most of your leads come from a phone call and you miss some of them, this is for you.</p></details>
+      <details><summary>What exactly do I get for $297?</summary><p>A 14-day, done-for-you pilot: instant text-back on your missed calls, AI triage and qualification (budget, need, timeline), and a conflict-free 15-minute discovery-call booking flow on your calendar. We configure your services, prices and service area for you.</p></details>
+      <details><summary>How fast is it live?</summary><p>Typically about 48 hours once we have your details. Carrier/SMS registration (A2P 10DLC) can occasionally add a few days on their side — that's why the pilot is paid upfront and we start configuration immediately.</p></details>
+      <details><summary>Do I need to buy software or learn a new tool?</summary><p>No. It's a done-for-you service. You keep your phone number and calendar; we wire up the text-back, qualification and booking behind them.</p></details>
+      <details><summary>What happens after the 14 days?</summary><p>You keep the booked calls and the results. If you want to continue, the standard service is $497 setup + $249/mo. There is no obligation and no auto-charge — the pilot is a one-time payment.</p></details>
+      <details><summary>What if it doesn't work?</summary><p>If we don't book a qualified discovery call within the 14-day pilot, we refund the full $297. No forms to fill, no arguments.</p></details>
+      <details><summary>Are the calls really "qualified"?</summary><p>Yes. Every reply is triaged, and only leads with a specific need, a workable budget and a reasonable timeline are offered a call. Missing information triggers one short follow-up question first.</p></details>
+      <details><summary>Which payment methods do you accept?</summary><p>Cards via our secure Stripe payment link. If Stripe is unavailable for your region, we can invoice via PayPal or Lemon Squeezy — just ask.</p></details>
+    </section>
+
+    <hr class="sep" />
+
+    <section class="final">
+      <p class="eyebrow">3 pilot slots this week</p>
+      <h2>The next missed call is already on its way.</h2>
+      <p>Set it up in a day, collect a recovered job in three. One recovered job covers the cost of the pilot.</p>
+      <a class="btn" href="checkout.html">Start the $297 paid pilot →</a>
+      <p class="micro">Questions first? Reply to this page — we'll answer within one business day.</p>
+    </section>
+  </main>
+
+  <footer>
+    Ada Lovelace · Speed-to-Lead · Local home-service recovery pilot<br />
+    © 2026 · <a href="#top" style="color:var(--faint)">Back to top</a>
+  </footer>
+</div>
+<script>
+  // Reveal the demo button only once a real Loom URL replaces {{DEMO_URL}}.
+  document.querySelectorAll('.demo-link').forEach(function (el) {
+    if (el.innerHTML.indexOf('{{DEMO_URL}}') !== -1) el.style.display = 'none';
+  });
+</script>
+</body>
+</html>
