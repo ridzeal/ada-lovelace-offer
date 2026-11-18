@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>90-second demo — missed call → booked job</title>
+<style>
+  :root{--bg:#0b0f1a;--surface:#151d2e;--ink:#f5f7fb;--muted:#a9b4c9;--accent:#6ee7b7;--accent2:#60a5fa;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(900px 500px at 50% -10%,rgba(96,165,250,.16),transparent 60%),var(--bg);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:860px;margin:0 auto;padding:34px 20px 70px}
+  h1{font-size:clamp(26px,5vw,38px);line-height:1.15;letter-spacing:-.03em;margin:0 0 6px}
+  .sub{color:var(--muted);margin:0 0 24px}
+  .bar{display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  button{background:rgba(255,255,255,.07);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 15px;font-weight:700;cursor:pointer}
+  button.on{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#06231a;border:0}
+  .clock{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700;margin-left:auto}
+  .stage{display:grid;gap:16px;grid-template-columns:1fr}
+  @media(min-width:760px){.stage{grid-template-columns:1.15fr .85fr}}
+  .term{background:#070b13;border:1px solid var(--line);border-radius:14px;padding:16px;min-height:330px;font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow:hidden}
+  .term .dots{display:flex;gap:6px;margin-bottom:12px}
+  .term .dots i{width:10px;height:10px;border-radius:50%;background:#334155;display:block}
+  .cmd{color:var(--accent2)} .key{color:var(--accent)} .num{color:#fbbf24} .dim{color:#64748b} .str{color:#c4b5fd}
+  .panel{background:linear-gradient(160deg,var(--surface),#111827);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .panel h2{margin:0 0 8px;font-size:19px}
+  .panel p{color:var(--muted);font-size:14px;margin:0 0 12px}
+  .badge{display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(110,231,183,.12);color:var(--accent);font-size:12px;font-weight:700;margin-bottom:10px}
+  .steps{display:flex;gap:6px;margin-top:18px}
+  .steps span{height:4px;flex:1;background:#26334a;border-radius:4px}
+  .steps span.done{background:var(--accent)}
+  .note{margin-top:22px;color:var(--faint,#7c8aa3);font-size:12.5px}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<main>
+  <h1>Missed call → booked job in 90 seconds</h1>
+  <p class="sub">The actual triage → qualify → book engine, shown with fake prospect data. Recorded walkthrough of the live CLI flow.</p>
+
+  <div class="bar">
+    <button id="play" class="on">▶ Play</button>
+    <button id="restart">↺ Restart</button>
+    <span class="clock" id="clock">0:00 / 1:30</span>
+  </div>
+
+  <div class="stage">
+    <div class="term"><div class="dots"><i></i><i></i><i></i></div><div id="screen"></div></div>
+    <div class="panel">
+      <span class="badge" id="badge">STEP 1 OF 3</span>
+      <h2 id="title">Triage the reply</h2>
+      <p id="desc">A missed call triggers an instant text-back. The reply is classified and budget, need and timeline are extracted — in under a second.</p>
+      <p class="dim" id="cmdline"></p>
+      <div class="steps"><span id="s1"></span><span id="s2"></span><span id="s3"></span></div>
+    </div>
+  </div>
+  <p class="note">This is a walkthrough of real command output captured from the engine (fake PII only: Acme HVAC / owner@acme.example). Ready to record with Loom using <code>offer/loom-demo-script.md</code>. <a href="index.html">← Back to the offer</a></p>
+</main>
+<script>
+const scenes = [
+  {t:0,   badge:"INTRO",       title:"The problem", desc:"A caller hangs up instead of leaving a voicemail. They call the next Google result. We text them back in seconds.", cmd:"", screen:`<div class="dim">$ missed call received → instant SMS text-back sent</div><div class="dim">$ prospect replies...</div><br><div class="str">"Hi, need HVAC replacement, budget about $4000, can we do this next week?"</div>`},
+  {t:8,   badge:"STEP 1 OF 3", title:"Triage the reply", desc:"One command classifies the reply and extracts the buying signals. Spam, out-of-office and 'not interested' are filtered automatically.", cmd:"python -m ada_lovelace.cli triage reply.txt", screen:`<div class="cmd">$ python3 -m ada_lovelace.cli triage reply.txt --id demo-1 --name "Acme HVAC" --email owner@acme.example</div><br><div class="dim">Persisted prospect: owner@acme.example (status=qualified)</div><div>{</div><div>  "reply_id": <span class="str">"demo-1"</span>,</div><div>  "category": <span class="key">"qualified"</span>,</div><div>  "extracted_budget": <span class="num">4000.0</span>,</div><div>  "extracted_timeline_days": <span class="num">7</span>,</div><div>  "confidence": <span class="num">1.0</span>,</div><div>  "next_action": <span class="str">"send discovery-call booking link"</span>,</div><div>  "notes": <span class="str">"signals=3/3"</span></div><div>}</div>`},
+  {t:36,  badge:"RESULT",      title:"A real buyer, surfaced", desc:"Budget $4,000, a specific HVAC need, a next-week timeline. All three buying signals present — this lead moves forward.", cmd:"", screen:`<div class="key">✓ category = qualified</div><div class="key">✓ budget   = $4,000</div><div class="key">✓ need     = HVAC replacement</div><div class="key">✓ timeline = 7 days</div><br><div class="dim">→ route to qualification gates</div>`},
+  {t:48,  badge:"STEP 2 OF 3", title:"Qualify against your gates", desc:"Three configurable gates — budget, need, timeline. Missing information triggers one short follow-up question instead of a generic chase.", cmd:"python -m ada_lovelace.cli qualify --budget 4000 --need ... --timeline 7", screen:`<div class="cmd">$ python3 -m ada_lovelace.cli qualify --email owner@acme.example \\</div><div class="cmd">    --budget 4000 --need "HVAC unit replacement" --timeline 7</div><br><div>{</div><div>  "budget_ok":   <span class="key">true</span>,</div><div>  "need_ok":     <span class="key">true</span>,</div><div>  "timeline_ok": <span class="key">true</span>,</div><div>  "qualified":   <span class="key">true</span>,</div><div>  "score":       <span class="num">3</span></div><div>}</div>`},
+  {t:72,  badge:"STEP 3 OF 3", title:"Book a conflict-free call", desc:"Open slots are generated for business hours only. The first free 15-minute slot is locked in — no double-bookings.", cmd:"python -m ada_lovelace.cli slots --days 5 --limit 4 && python -m ada_lovelace.cli book ...", screen:`<div class="cmd">$ python3 -m ada_lovelace.cli slots --days 5 --limit 3</div><div class="dim">2026-11-18T09:00:00</div><div class="dim">2026-11-18T09:30:00</div><div class="dim">2026-11-18T10:00:00</div><br><div class="cmd">$ python3 -m ada_lovelace.cli book --email owner@acme.example \\</div><div class="cmd">    --slot 2026-11-19T10:00:00</div><br><div class="key">✓ booked 15-min discovery call</div><div class="dim">✓ calendar invite (.ics) + meeting link</div><div class="dim">✓ prospect_status = booked</div>`},
+  {t:86,  badge:"DONE",        title:"From missed call to booked job", desc:"Text-back, qualification and booking — automated. Live in about 48 hours. One recovered job pays for the pilot.", cmd:"", screen:`<div class="key">MISSED CALL → TEXT-BACK → QUALIFY → BOOKED CALL</div><br><div class="dim">Setup: 1 day · First recovered job: 3 days</div><div class="str">$297 paid pilot — 14 days, refund if no qualified call</div><br><div><a href="index.html">Start the pilot →</a></div>`}
+];
+let cur=-1, playing=true, start=Date.now(), elapsed=0, timer=null;
+const screen=document.getElementById('screen'), clock=document.getElementById('clock');
+function show(i){
+  if(i===cur) return; cur=i;
+  const s=scenes[i];
+  screen.innerHTML=s.screen;
+  document.getElementById('badge').textContent=s.badge;
+  document.getElementById('title').textContent=s.title;
+  document.getElementById('desc').textContent=s.desc;
+  document.getElementById('cmdline').textContent=s.cmd;
+  const step=s.badge.startsWith('STEP 1')?1:s.badge.startsWith('STEP 2')?2:s.badge.startsWith('STEP 3')?3:(s.badge==='DONE'?3:0);
+  for(let k=1;k<=3;k++) document.getElementById('s'+k).className = k<=step?'done':'';
+}
+function tick(){
+  if(!playing) return;
+  elapsed=Math.floor((Date.now()-start)/1000);
+  if(elapsed>=90){ elapsed=90; playing=false; document.getElementById('play').textContent='▶ Replay'; }
+  clock.textContent=`${Math.floor(elapsed/60)}:${String(elapsed%60).padStart(2,'0')} / 1:30`;
+  let idx=0; for(let i=0;i<scenes.length;i++) if(elapsed>=scenes[i].t) idx=i;
+  show(idx);
+}
+timer=setInterval(tick,250); tick();
+document.getElementById('play').onclick=function(){
+  if(elapsed>=90){ elapsed=0; start=Date.now(); playing=true; this.textContent='❚❚ Pause'; tick(); return; }
+  playing=!playing;
+  if(playing) start=Date.now()-elapsed*1000;
+  this.textContent=playing?'❚❚ Pause':'▶ Play';
+};
+document.getElementById('restart').onclick=function(){ elapsed=0; start=Date.now(); playing=true; cur=-1; document.getElementById('play').textContent='❚❚ Pause'; tick(); };
+</script>
+</body>
+</html>

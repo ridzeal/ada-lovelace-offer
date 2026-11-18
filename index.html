@@ -139,7 +139,7 @@
         <div class="step"><div class="n">3</div><div><h3>Book</h3><p>Qualified leads get a 15-minute slot on your calendar — conflict-free, business hours only. You show up to a call with a pre-qualified buyer.</p></div></div>
       </div>
       <p class="demo-link" style="text-align:center;margin-top:22px">
-        <a class="btn sm" href="{{DEMO_URL}}" style="background:rgba(255,255,255,.08);color:var(--ink);box-shadow:none">▶ Watch the 90-second demo</a>
+        <a class="btn sm" href="demo.html" style="background:rgba(255,255,255,.08);color:var(--ink);box-shadow:none">▶ Watch the 90-second demo</a>
       </p>
     </section>
 
@@ -199,9 +199,9 @@
   </footer>
 </div>
 <script>
-  // Reveal the demo button only once a real Loom URL replaces {{DEMO_URL}}.
+  // Reveal the demo button only once a real Loom URL replaces demo.html.
   document.querySelectorAll('.demo-link').forEach(function (el) {
-    if (el.innerHTML.indexOf('{{DEMO_URL}}') !== -1) el.style.display = 'none';
+    if (el.innerHTML.indexOf('demo.html') !== -1) el.style.display = 'none';
   });
 </script>
 </body>
